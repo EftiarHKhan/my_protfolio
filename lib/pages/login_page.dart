@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:my_protfolio/pages/signup_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -132,9 +134,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ),
                           TextButton(
-                              onPressed: (){
-
-                              },
+                              onPressed: () => Get.to(()=>const SignupPage()),
                               child: const Text(
                             "Sign Up",
                             style: TextStyle(
