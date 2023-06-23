@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_protfolio/pages/protfolio_page.dart';
 import 'package:my_protfolio/pages/signup_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -100,7 +101,7 @@ class _LoginPageState extends State<LoginPage> {
                         height: 60,
                         width: 200,
                         child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () => Get.to(()=>const ProtfolioPage()),
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.lightBlue,
                                 side: const BorderSide(
