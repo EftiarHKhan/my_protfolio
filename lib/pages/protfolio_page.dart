@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+import '../Controller/user_name_controller.dart';
+
 
 class ProtfolioPage extends StatefulWidget {
   const ProtfolioPage({Key? key}) : super(key: key);
@@ -8,6 +13,9 @@ class ProtfolioPage extends StatefulWidget {
 }
 
 class _ProtfolioPageState extends State<ProtfolioPage> {
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

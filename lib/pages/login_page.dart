@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_protfolio/Controller/login_controller.dart';
+import 'package:my_protfolio/pages/home_page.dart';
 import 'package:my_protfolio/pages/protfolio_page.dart';
 import 'package:my_protfolio/pages/signup_page.dart';
 
@@ -11,6 +13,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+
+  LoginController controller = Get.put(LoginController());
+
   bool passwordVisible = false;
 
   @override
@@ -49,6 +54,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: Column(
                     children: [
                       TextField(
+                        controller: controller.emailController.value,
                         decoration: InputDecoration(
                           labelText: 'Email',
                           labelStyle: const TextStyle(
@@ -66,6 +72,7 @@ class _LoginPageState extends State<LoginPage> {
                         height: 20,
                       ),
                       TextField(
+                        controller: controller.passwordController.value,
                         obscureText: passwordVisible,
                         decoration: InputDecoration(
                           labelText: 'Password',
@@ -97,31 +104,48 @@ class _LoginPageState extends State<LoginPage> {
                       const SizedBox(
                         height: 30.0,
                       ),
-                      SizedBox(
-                        height: 60,
-                        width: 200,
-                        child: ElevatedButton(
-                            onPressed: () => Get.to(()=>const ProtfolioPage()),
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.lightBlue,
-                                side: const BorderSide(
+
+                      Obx((){
+                        return controller.loading.value ? const CircularProgressIndicator():SizedBox(
+                          height: 60,
+                          width: 200,
+                          child: ElevatedButton(
+                            //onPressed: () => Get.to(()=>const HomePage()),
+
+                              onPressed: (){
+                                controller.LoginApi();
+                              },
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.lightBlue,
+                                  side: const BorderSide(
                                     //width: 3,
-                                    color: Colors.brown), //border width and color
-                                //elevation: 3, //elevation of button
-                                shape: RoundedRectangleBorder( //to set border radius to button
-                                    borderRadius: BorderRadius.circular(15.0)
-                                ),
-                                padding: const EdgeInsets.all(
-                                    20) //content padding inside button
-                                ),
-                            child: const Text(
-                              "Log in",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20.0,
+                                      color: Colors.brown), //border width and color
+                                  //elevation: 3, //elevation of button
+                                  shape: RoundedRectangleBorder( //to set border radius to button
+                                      borderRadius: BorderRadius.circular(15.0)
+                                  ),
+                                  padding: const EdgeInsets.all(
+                                      20) //content padding inside button
                               ),
-                            )),
-                      ),
+                              child: const Text(
+                                "Log in",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20.0,
+                                ),
+                              )),
+                        );
+                      }),
+
+                      // another way to create login button
+                      // InkWell(
+                      //   onTap: (){},
+                      //   child: Container(
+                      //     child: Text('Login'),
+                      //   ),
+                      // ),
+
+
                       const SizedBox(height: 30.0,),
 
                       Row(
